@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beechwood Golf Course — Thank You</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Georgia', serif; background: #f4f7f2; color: #1a2e1a; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px 16px; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.10); padding: 52px 48px; width: 100%; max-width: 520px; text-align: center; }
+    .checkmark { font-size: 4rem; margin-bottom: 16px; }
+    h1 { font-size: 1.8rem; color: #1e5c1e; margin-bottom: 10px; }
+    p { font-size: 1rem; color: #4a6b4a; line-height: 1.6; margin-bottom: 10px; }
+    .divider { width: 60px; height: 3px; background: #2d8a2d; margin: 18px auto; border-radius: 2px; }
+    .btn-new { display: inline-block; margin-top: 24px; padding: 13px 32px; background: #1e5c1e; color: white; border: none; border-radius: 8px; font-size: 1rem; font-family: 'Georgia', serif; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .btn-new:hover { background: #165016; }
+    footer { margin-top: 30px; font-size: 0.8rem; color: #8aaa8a; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="checkmark">&#9989;</div>
+    <h1>Waiver Signed!</h1>
+    <div class="divider"></div>
+    <p>Thank you, <strong>{{ name }}</strong>.</p>
+    <p>Your Golf Cart Liability Waiver has been recorded. Have a great round at Beechwood Golf Course!</p>
+    <a href="/" class="btn-new">Next Player &rarr;</a>
+  </div>
+  <footer>Beechwood Golf Course &mdash; All rights reserved</footer>
+</body>
+</html>
