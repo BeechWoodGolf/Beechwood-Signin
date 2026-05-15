@@ -42,7 +42,7 @@ logging.basicConfig(
 # Also log to stdout so Railway's log viewer works
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 
-app = Flask(__name__, template_folder=resource_path("templates"))
+app = Flask(__name__, template_folder=resource_path("templates"), static_folder=resource_path("static"))
 app.secret_key = "beechwood-golf-course"
 DB_PATH = os.path.join(_data_dir, "waivers.db")
 logging.info("App starting. DB=%s Templates=%s", DB_PATH, resource_path("templates"))

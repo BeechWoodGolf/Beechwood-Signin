@@ -17,6 +17,9 @@
     /* ── Top bar ── */
     .topbar {
       background: #0d1f3c;
+      background-image: url('/static/pattern.png');
+      background-size: 500px auto;
+      background-blend-mode: overlay;
       padding: 18px 32px;
       display: flex;
       align-items: center;
@@ -189,13 +192,7 @@
 
   <div class="topbar">
     <div class="topbar-logo">
-      <svg viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g fill="white">
-          <polygon points="40,4 56,18 53,22 40,10 27,22 24,18"/>
-          <polygon points="40,18 60,34 57,39 40,25 23,39 20,34"/>
-          <polygon points="40,32 64,52 61,57 40,40 19,57 16,52"/>
-        </g>
-      </svg>
+      <img src="/static/logo.png" alt="Beechwood" style="height:40px; filter:invert(1) brightness(2);" />
       <div>
         <div class="topbar-title">Beechwood Golf Course</div>
         <div class="topbar-sub">Admin Dashboard</div>
