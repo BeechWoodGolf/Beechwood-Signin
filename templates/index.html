@@ -21,6 +21,18 @@
       padding: 0 0 60px;
     }
 
+    /* Dim the pattern without touching the image */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 31, 60, 0.78);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header, .card, footer { position: relative; z-index: 1; }
+
     /* ── Header ── */
     header {
       width: 100%;
@@ -34,10 +46,22 @@
     }
 
 
+    .logo-wrap {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 28px 40px 22px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
     .logo-img {
-      width: 220px;
+      width: 210px;
       filter: invert(1) brightness(2);
-      margin-bottom: 6px;
       position: relative;
     }
 
@@ -264,8 +288,10 @@
 <body>
 
   <header>
-    <img src="/static/logo.png" alt="Beechwood Golf Course" class="logo-img" />
-    <p class="header-sub">Golf Cart Sign-In &amp; Liability Waiver</p>
+    <div class="logo-wrap">
+      <img src="/static/logo.png" alt="Beechwood Golf Course" class="logo-img" />
+      <p class="header-sub">Golf Cart Sign-In &amp; Liability Waiver</p>
+    </div>
   </header>
 
   <div class="card">

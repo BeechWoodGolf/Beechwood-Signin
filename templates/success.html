@@ -13,6 +13,16 @@
       background-image: url('/static/pattern.png');
       background-size: 500px auto;
       background-repeat: repeat;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 31, 60, 0.78);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card, footer { position: relative; z-index: 1;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
