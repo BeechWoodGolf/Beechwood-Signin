@@ -4,63 +4,311 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beechwood Golf Course — Sign In</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: 'Georgia', serif;
-      background: #f4f7f2;
-      color: #1a2e1a;
+      font-family: 'Montserrat', sans-serif;
+      background: #0d1f3c;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 30px 16px 60px;
+      padding: 0 0 60px;
     }
-    header { text-align: center; margin-bottom: 28px; }
-    header h1 { font-size: 2rem; color: #1e5c1e; letter-spacing: 0.04em; }
-    header p { color: #4a6b4a; font-size: 1rem; margin-top: 4px; }
-    .divider { width: 80px; height: 3px; background: #2d8a2d; margin: 10px auto 0; border-radius: 2px; }
-    .card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.10); padding: 36px 40px; width: 100%; max-width: 700px; }
-    .error-banner { background: #fde8e8; border: 1px solid #f5a0a0; color: #b91c1c; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 0.95rem; }
-    .section-title { font-size: 1.1rem; font-weight: bold; color: #1e5c1e; margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid #d4ebd4; }
-    .form-group { margin-bottom: 18px; }
-    label { display: block; font-size: 0.9rem; font-weight: bold; color: #2d5a2d; margin-bottom: 6px; }
-    input[type="text"], input[type="tel"] { width: 100%; padding: 12px 14px; border: 1.5px solid #b8d4b8; border-radius: 8px; font-size: 1.05rem; font-family: inherit; color: #1a2e1a; transition: border-color 0.2s; outline: none; }
-    input:focus { border-color: #2d8a2d; box-shadow: 0 0 0 3px rgba(45,138,45,0.12); }
+
+    /* ── Header ── */
+    header {
+      width: 100%;
+      background: #0d1f3c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 20px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+    }
+
+    .logo-svg {
+      width: 200px;
+      margin-bottom: 6px;
+    }
+
+    .header-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #fff;
+      width: 100%;
+      max-width: 680px;
+      margin-top: 0;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      padding: 38px 44px 44px;
+    }
+
+    @media (min-width: 720px) {
+      body { padding: 40px 16px 60px; }
+      header { border-radius: 16px 16px 0 0; max-width: 680px; margin-top: 0; }
+      .card { border-radius: 0 0 16px 16px; }
+    }
+
+    .error-banner {
+      background: #fde8e8;
+      border: 1px solid #f5a0a0;
+      color: #b91c1c;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 22px;
+      font-size: 0.88rem;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #1B3A6B;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #dce6f5;
+    }
+
+    /* ── Inputs ── */
+    .form-group { margin-bottom: 16px; }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1B3A6B;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1.5px solid #c5d5ec;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Montserrat', sans-serif;
+      color: #0d1f3c;
+      background: #f7faff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: #2952A3;
+      box-shadow: 0 0 0 3px rgba(41,82,163,0.12);
+      background: #fff;
+    }
+
+    /* ── Waiver ── */
     .waiver-section { margin: 28px 0; }
-    .waiver-scroll { background: #f9fbf9; border: 1.5px solid #b8d4b8; border-radius: 8px; padding: 16px 18px; height: 260px; overflow-y: auto; font-size: 0.875rem; line-height: 1.7; color: #2a3d2a; white-space: pre-wrap; }
-    .waiver-scroll::-webkit-scrollbar { width: 6px; }
-    .waiver-scroll::-webkit-scrollbar-track { background: #e8f0e8; }
-    .waiver-scroll::-webkit-scrollbar-thumb { background: #6aaa6a; border-radius: 3px; }
-    .scroll-hint { font-size: 0.8rem; color: #7a9a7a; margin-top: 5px; text-align: right; }
+
+    .waiver-scroll {
+      background: #f7faff;
+      border: 1.5px solid #c5d5ec;
+      border-radius: 8px;
+      padding: 16px 18px;
+      height: 240px;
+      overflow-y: auto;
+      font-family: 'EB Garamond', serif;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: #1a2744;
+      white-space: pre-wrap;
+    }
+
+    .waiver-scroll::-webkit-scrollbar { width: 5px; }
+    .waiver-scroll::-webkit-scrollbar-track { background: #dce6f5; }
+    .waiver-scroll::-webkit-scrollbar-thumb { background: #2952A3; border-radius: 3px; }
+
+    .scroll-hint {
+      font-size: 0.72rem;
+      color: #7a99c8;
+      margin-top: 5px;
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Signature ── */
     .signature-section { margin: 28px 0 20px; }
-    .sig-instructions { font-size: 0.9rem; color: #4a6b4a; margin-bottom: 10px; }
-    .sig-wrapper { position: relative; border: 2px solid #2d8a2d; border-radius: 8px; background: #fff; overflow: hidden; }
-    #sig-canvas { display: block; width: 100%; height: 180px; cursor: crosshair; touch-action: none; }
-    .sig-actions { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-    .btn-clear { background: none; border: 1.5px solid #aaa; border-radius: 6px; padding: 6px 16px; font-size: 0.85rem; color: #555; cursor: pointer; transition: all 0.2s; }
-    .btn-clear:hover { border-color: #888; color: #222; }
-    .sig-label { font-size: 0.8rem; color: #7a9a7a; }
-    .agree-row { display: flex; align-items: flex-start; gap: 10px; margin: 20px 0; padding: 14px; background: #f0f7f0; border-radius: 8px; border: 1px solid #c8e0c8; }
-    .agree-row input[type="checkbox"] { margin-top: 2px; width: 18px; height: 18px; accent-color: #2d8a2d; flex-shrink: 0; cursor: pointer; }
-    .agree-row label { font-size: 0.9rem; color: #2a3d2a; cursor: pointer; line-height: 1.5; }
-    .btn-submit { width: 100%; padding: 15px; background: #1e5c1e; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-family: 'Georgia', serif; cursor: pointer; letter-spacing: 0.03em; transition: background 0.2s; }
-    .btn-submit:hover { background: #165016; }
-    footer { margin-top: 24px; font-size: 0.8rem; color: #8aaa8a; }
+
+    .sig-instructions {
+      font-size: 0.8rem;
+      color: #4a6b9a;
+      margin-bottom: 10px;
+    }
+
+    .sig-wrapper {
+      border: 2px solid #2952A3;
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    #sig-canvas {
+      display: block;
+      width: 100%;
+      height: 180px;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    .sig-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-clear {
+      background: none;
+      border: 1.5px solid #c5d5ec;
+      border-radius: 6px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-family: 'Montserrat', sans-serif;
+      color: #4a6b9a;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+    }
+
+    .btn-clear:hover { border-color: #2952A3; color: #0d1f3c; }
+
+    .sig-status {
+      font-size: 0.75rem;
+      color: #7a99c8;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Checkbox ── */
+    .agree-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 22px 0;
+      padding: 14px 16px;
+      background: #f0f5ff;
+      border-radius: 8px;
+      border: 1px solid #c5d5ec;
+    }
+
+    .agree-row input[type="checkbox"] {
+      margin-top: 2px;
+      width: 17px;
+      height: 17px;
+      accent-color: #2952A3;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .agree-row label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #1a2744;
+      cursor: pointer;
+      line-height: 1.55;
+    }
+
+    /* ── Submit ── */
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: #1B3A6B;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover { background: #2952A3; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    footer {
+      margin-top: 28px;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Beechwood Golf Course</h1>
-    <p>Golf Cart Sign-In &amp; Liability Waiver</p>
-    <div class="divider"></div>
+    <!-- Beechwood Logo SVG -->
+    <svg class="logo-svg" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Chevron marks -->
+      <g fill="white">
+        <!-- Top chevron -->
+        <polygon points="200,18 240,52 232,60 200,30 168,60 160,52"/>
+        <!-- Middle chevron -->
+        <polygon points="200,42 248,82 240,92 200,56 160,92 152,82"/>
+        <!-- Bottom chevron -->
+        <polygon points="200,68 256,114 248,124 200,82 152,124 144,114"/>
+      </g>
+      <!-- BEECHWOOD text -->
+      <text x="200" y="158" text-anchor="middle"
+            font-family="Montserrat, Arial, sans-serif"
+            font-weight="900"
+            font-size="52"
+            fill="white"
+            letter-spacing="6">BEECHWOOD</text>
+      <!-- EST. 1960 -->
+      <text x="200" y="182" text-anchor="middle"
+            font-family="Montserrat, Arial, sans-serif"
+            font-weight="500"
+            font-size="16"
+            fill="rgba(255,255,255,0.65)"
+            letter-spacing="8">EST. 1960</text>
+    </svg>
+    <p class="header-sub">Golf Cart Sign-In &amp; Liability Waiver</p>
   </header>
+
   <div class="card">
     {% if error %}
     <div class="error-banner">{{ error }}</div>
     {% endif %}
+
     <form id="waiver-form">
+
       <div class="section-title">Your Information</div>
+
       <div class="form-group">
         <label for="name">Full Name</label>
         <input type="text" id="name" name="name" placeholder="First and Last Name" required />
@@ -69,77 +317,99 @@
         <label for="phone">Phone Number</label>
         <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required />
       </div>
+
       <div class="waiver-section">
-        <div class="section-title">Liability Waiver — Please Read Carefully</div>
+        <div class="section-title">Liability Waiver &mdash; Please Read Carefully</div>
         <div class="waiver-scroll">{{ waiver_text }}</div>
-        <div class="scroll-hint">Scroll to read the full waiver ↑</div>
+        <div class="scroll-hint">Scroll to read the full waiver &uarr;</div>
       </div>
+
       <div class="signature-section">
         <div class="section-title">Your Signature</div>
-        <p class="sig-instructions">Sign below using your mouse or finger:</p>
+        <p class="sig-instructions">Sign below using your finger or mouse:</p>
         <div class="sig-wrapper">
           <canvas id="sig-canvas"></canvas>
         </div>
         <div class="sig-actions">
           <button type="button" class="btn-clear" onclick="clearSignature()">Clear</button>
-          <span class="sig-label" id="sig-status">Draw your signature above</span>
+          <span class="sig-status" id="sig-status">Draw your signature above</span>
         </div>
       </div>
+
       <div class="agree-row">
         <input type="checkbox" id="agree" required />
-        <label for="agree">I have read and fully understand the Golf Cart Liability Waiver above. I voluntarily agree to its terms and conditions, and I confirm that I am 18 years of age or older.</label>
+        <label for="agree">I have read and fully understand the Golf Cart Liability Waiver above. I voluntarily agree to its terms and confirm that I am 18 years of age or older.</label>
       </div>
+
       <button type="submit" class="btn-submit">Sign &amp; Submit Waiver</button>
+
     </form>
   </div>
-  <footer>Beechwood Golf Course &mdash; All rights reserved</footer>
+
+  <footer>Beechwood Golf Course &mdash; Est. 1960 &mdash; All Rights Reserved</footer>
+
   <script>
+    // ── Signature Pad ──
     const canvas = document.getElementById('sig-canvas');
     const ctx = canvas.getContext('2d');
     let drawing = false, hasSig = false;
+
     function resizeCanvas() {
       const rect = canvas.parentElement.getBoundingClientRect();
-      const ratio = window.devicePixelRatio || 1;
-      canvas.width = rect.width * ratio;
-      canvas.height = 180 * ratio;
-      ctx.scale(ratio, ratio);
-      ctx.strokeStyle = '#111'; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      const r = window.devicePixelRatio || 1;
+      canvas.width = rect.width * r;
+      canvas.height = 180 * r;
+      ctx.scale(r, r);
+      ctx.strokeStyle = '#0d1f3c';
+      ctx.lineWidth = 2.2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
     }
     resizeCanvas();
-    function getPos(e) {
+
+    function pos(e) {
       const rect = canvas.getBoundingClientRect();
       if (e.touches) return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
       return { x: e.clientX - rect.left, y: e.clientY - rect.top };
     }
-    canvas.addEventListener('mousedown', e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
-    canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; updateStatus(); });
+
+    canvas.addEventListener('mousedown', e => { drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+    canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; updateStatus(); });
     canvas.addEventListener('mouseup', () => drawing = false);
     canvas.addEventListener('mouseleave', () => drawing = false);
-    canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
-    canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; updateStatus(); }, { passive: false });
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, { passive: false });
+    canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; updateStatus(); }, { passive: false });
     canvas.addEventListener('touchend', () => drawing = false);
+
     function updateStatus() {
       const s = document.getElementById('sig-status');
       s.textContent = hasSig ? 'Signature captured ✓' : 'Draw your signature above';
-      s.style.color = hasSig ? '#1e5c1e' : '';
+      s.style.color = hasSig ? '#1B3A6B' : '';
+      s.style.fontWeight = hasSig ? '600' : '';
     }
-    function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); hasSig = false; updateStatus(); }
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function () {
+
+    function clearSignature() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSig = false;
+      updateStatus();
+    }
+
+    // ── Phone format ──
+    document.getElementById('phone').addEventListener('input', function () {
       let v = this.value.replace(/\D/g, '').slice(0, 10);
       if (v.length >= 7) v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
       else if (v.length >= 4) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
       else if (v.length > 0) v = `(${v}`;
       this.value = v;
     });
+
+    // ── Submit via fetch ──
     document.getElementById('waiver-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       if (!hasSig) { alert('Please sign the waiver before submitting.'); return; }
 
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      const signature = canvas.toDataURL('image/png');
-
       if (!name || !phone) { alert('Please fill in your name and phone number.'); return; }
 
       const btn = document.querySelector('.btn-submit');
@@ -150,14 +420,13 @@
         const resp = await fetch('/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, phone, signature })
+          body: JSON.stringify({ name, phone, signature: canvas.toDataURL('image/png') })
         });
         if (resp.ok) {
           const html = await resp.text();
           document.open(); document.write(html); document.close();
         } else {
-          const text = await resp.text();
-          alert('Error: ' + text);
+          alert('Error: ' + await resp.text());
           btn.disabled = false;
           btn.textContent = 'Sign & Submit Waiver';
         }
